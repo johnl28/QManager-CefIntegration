@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="cef-core">
+      <UniqueIdentifier>{5658e8b7-13df-4da1-8b52-96178d8e068e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apps">
+      <UniqueIdentifier>{e9b032ee-b0f8-48ad-91f7-b9c00422938b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apps\desktop-mgr">
+      <UniqueIdentifier>{7b9cca80-a703-4dcf-aa9d-b8121bb48e63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{c878ba7b-492a-4af6-bb8e-fae4e463ce80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DesktopMgr.h">
+      <Filter>Apps\desktop-mgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32-CefIntegration.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="app.h">
+      <Filter>cef-core</Filter>
+    </ClInclude>
+    <ClInclude Include="JSManager.h">
+      <Filter>cef-core</Filter>
+    </ClInclude>
+    <ClInclude Include="handler.h">
+      <Filter>cef-core</Filter>
+    </ClInclude>
+    <ClInclude Include="AppManager.h">
+      <Filter>Apps</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Win32-CefIntegration.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DesktopMgr.cpp">
+      <Filter>Apps\desktop-mgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="app.cpp">
+      <Filter>cef-core</Filter>
+    </ClCompile>
+    <ClCompile Include="handler.cpp">
+      <Filter>cef-core</Filter>
+    </ClCompile>
+    <ClCompile Include="JSManager.cpp">
+      <Filter>cef-core</Filter>
+    </ClCompile>
+    <ClCompile Include="AppManager.cpp">
+      <Filter>Apps</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Win32-CefIntegration.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Win32-CefIntegration.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

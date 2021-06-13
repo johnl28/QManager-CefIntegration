@@ -1,0 +1,202 @@
+<html>
+  	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	</head>
+	
+	<body>
+		<div style="overflow-y: auto; max-height: 390px;" class="box" id="box-1">
+			<div class="title-box" style="position: fixed; width: 85.5%; z-index: 1; margin-bottom: 300px;">
+				<label>Windows Colors</label>
+				<button onclick="Reset()" data-toggle="tooltip" data-placement="left" title="Reset to default" class="btn btn-danger" style="width: 30px; height: 30px; padding: 0px; float: right; margin-right: 10px; margin-top: 0px;"><span class="material-icons">settings_backup_restore</span></button>
+			</div>
+			<div class="box-tr" style="height: 45px;"></div>
+			<div class="box-tr">
+				<label style="animation: pulse 0.2s;">
+					You must reboot or relog in your system for this changes to have effect!
+				</label>
+			</div>
+			<input id="transparency-range" type="range" class="form-range" min="1" max="255">
+
+		</div>
+	</body>
+
+
+</html>
+
+<!-- 
+<style>
+.box-hover:active
+{
+	height: 300px;
+	color: white;
+}	
+
+.box-hover:active img {
+    display: block;
+}
+
+.box-hover img {
+    display: none;
+	width: 80%;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+</style>
+-->
+
+<style>
+.box-hover:hover
+{
+	color: white;
+}
+</style>
+
+<script>
+
+var options = [
+	{
+		label : "Desktop Hot Tracking",
+		key : "HotTrackingColor",
+		image : "/assets/img/preview/hottracking.png",
+		default : "#0099E6",
+	},
+	{
+		label : "Hilight Text Color",
+		key : "HilightText",
+		image : "",
+		default : "#FFFFFF",
+	},
+	{
+		label : "Hilight & Hot Tracking Border",
+		key : "Hilight",
+		image : "",
+		default : "#0055FF",
+	},
+	{
+		label : "Active Border",
+		key : "ActiveBorder",
+		image : "",
+		default : "#B4B4B4",
+	},				
+	{
+		label : "Active Title",
+		key : "ActiveTitle",
+		image : "",
+		default : "#99B4D1",
+	},
+	{
+		label : "Menu",
+		key : "Menu",
+		image : "",
+		default : "#F0F0F0",
+	},	
+	{
+		label : "Window",
+		key : "Window",
+		image : "",
+		default : "#FFFFFF",
+	},	
+	{
+		label : "Window Frame",
+		key : "WindowFrame",
+		image : "",
+		default : "#646464",
+	},	
+	{
+		label : "Window Text",
+		key : "WindowText",
+		image : "",
+		default : "#000000",
+	},
+	{
+		label : "Gradient Inactive Title",
+		key : "GradientInactiveTitle",
+		image : "",
+		default : "#d7e4f2",
+	},		
+	{
+		label : "Gradient Active Title",
+		key : "GradientActiveTitle",
+		image : "",
+		default : "#b9d1ea",
+	},	
+] 
+
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+}
+
+function RGBToHex(rgb) {
+
+  rgb = rgb.split(" ");
+
+  let r = (+rgb[0]).toString(16),
+      g = (+rgb[1]).toString(16),
+      b = (+rgb[2]).toString(16);
+
+  if (r.length == 1)
+    r = "0" + r;
+  if (g.length == 1)
+    g = "0" + g;
+  if (b.length == 1)
+    b = "0" + b;
+
+  return "#" + r + g + b;
+}
+
+function OnChangeColor(key, value)
+{
+	var rgb = hexToRgb(value);
+	if(!rgb) {
+		return;
+	}
+	
+	config.SetWindowsColor(key, `${rgb.r} ${rgb.g} ${rgb.b}`);
+}
+
+function Reset()
+{
+	for(i = 0; i < options.length; i++)
+	{	
+		var key = options[i].key;
+		var color = options[i].default;
+
+		$(`#${key}`).val(color);
+		OnChangeColor(key, color);
+	}
+}
+
+$('#transparency-range').change( function() 
+{
+	config.ChangeTaskTransparency(parseInt(this.value));
+})
+
+$(document).ready(OnReady);
+function OnReady()
+{
+	for(i = 0; i < options.length; i++)
+	{	
+		var key = options[i].key;
+		var res = config.GetWindowsColor(key);
+
+		var row = `<div class="box-tr box-hover">
+					<input onchange="OnChangeColor('${key}', this.value)" class="color-input" type="color" id="${key}" value="${RGBToHex(res)}">
+					<label style="position: absolute; margin-left: 20px; margin-top: 7px;" for="${key}">${options[i].label}</label>
+					<span style="float: right; left: 50px; margin-top: 5px; font-size: 30px;" class="material-icons">navigate_next</span>
+				</div>`;
+
+		$("#box-1").append(row);
+	}
+	InitCommon(); // init common lib
+}
+
+</script>
+
+

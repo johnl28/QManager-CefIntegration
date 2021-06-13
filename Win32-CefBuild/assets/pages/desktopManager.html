@@ -1,0 +1,136 @@
+<html>
+  	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+  	</head>
+
+	<body>
+		<div class="box" id="desk-controll">
+			<div class="box-tr">
+				<div class="form-check form-switch">
+					<input class="form-check-input" type="checkbox" id="desk-mgr-toggle" />
+					<label class="form-check-label" for="desk-mgr-toggle">Auto-hide desktop icons</label>
+				</div>
+			</div>
+			<!-- dribbble -->
+			
+			<div class="progress" style="margin-left: 20px; margin-right: 20px; margin-top: 10px; height: 20px;">
+				<div id="wndmgr-progress" class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="5"><text id="sec-label"> Seconds 4/5 </text></div>
+			</div>
+		</div>
+
+		<div class="box">
+			<div class="title-box">
+				<label>Adjust Time</label>
+			</div>
+			<input id="time-range" type="range" class="form-range" id="customRange1" min="1" max="100">
+			<text id="seconds-label">
+				<div style="width: 10px; height: 10px; margin-right: 10px; margin-top: 0px; padding: 0px; top: 0px;" class="spinner-grow text-secondary" role="status"></div>
+				Time: 10 seconds
+			</text>
+		</div>
+		
+		<div class="box">
+			<div class="title-box">
+				<label>Key binds</label>
+			</div>
+			<div class="form-check form-check-inline key-bind-form">
+				<input class="form-check-input key-1" type="radio" name="key-bind-radio" id="key-bind-radio" value="1">
+				<label class="form-check-label" for="key-bind-radio">Left Click</label>
+			</div>
+			<div class="form-check form-check-inline key-bind-form">
+				<input class="form-check-input key-2" type="radio" name="key-bind-radio" id="key-bind-radio" value="2">
+				<label class="form-check-label" for="key-bind-radio-1">Right Click</label>
+			</div>
+			<div class="form-check form-check-inline key-bind-form">
+				<input class="form-check-input key-3" type="radio" name="key-bind-radio" id="key-bind-radio" value="3">
+				<label class="form-check-label" for="key-bind-radio-2">Both</label>
+			</div>
+		</div>
+
+	</body>
+</html>
+
+
+
+<script>
+/* Desktop manager
+*/
+var spam_interval = 1000;
+var lastClick = 0;
+
+function OnDekstopManagerUpdate(curTime, endTime, click)
+{
+	$("#wndmgr-progress").css("width", `${(curTime / endTime) * 100}%`);
+	$("#sec-label").text(`${curTime}/${endTime}(s)`);
+}
+
+
+$("#desk-mgr-toggle").click(ToggleDesktopManager);
+function ToggleDesktopManager()
+{
+	if(Date.now() < lastClick)
+	{
+		$("#desk-mgr-toggle").prop('checked', config.GetIntValue("desk_mgr"));
+		$("#desk-controll").addClass("decline"); 
+
+		setTimeout(function () { 
+			$("#desk-controll").removeClass("decline"); 
+
+		}, 100);
+		return;
+	}
+	
+	lastClick = Date.now() + spam_interval;
+
+	ToggleDesktopMgr(parseInt(config.GetIntValue("desk_mgr")));
+}
+
+$('#time-range').change( function() 
+{
+	config.SetIntValue("desk_mgr_time", parseInt(this.value));
+	$('#seconds-label').text(`Time ${this.value} seconds`);   
+})
+
+
+$('.key-bind-form input').change(function() {
+	var value = $('input[name="key-bind-radio"]:checked', '.key-bind-form').val(); 
+	config.SetIntValue("desk_mgr_key", parseInt(value));
+	});
+
+function OnUpdate()
+{
+	var time = config.GetIntValue("desk_mgr_time");
+	var cur_time = window.cur_time;
+	OnDekstopManagerUpdate(cur_time, time, false);
+}
+
+$(document).ready(OnReady);
+function OnReady()
+{
+	if(!window.cur_time)
+	{
+		window.cur_time = 0;
+	}
+
+	setInterval(OnUpdate, 500);
+
+	var isActive = Boolean(config.GetIntValue("desk_mgr"));
+	var timeRange =  config.GetIntValue("desk_mgr_time");
+
+	if(isActive) {
+		$("#desk-mgr-toggle").prop('checked', isActive);
+	}
+
+	OnDekstopManagerUpdate(window.cur_time, timeRange, false);
+
+	$('#seconds-label').text(`Time ${timeRange} seconds`);
+	$('#time-range').val(timeRange);
+	$(`.key-${config.GetIntValue("desk_mgr_key")}`).prop("checked", true);
+
+	$('#content').show();
+}
+</script>	
+
+
+

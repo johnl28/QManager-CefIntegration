@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	</head>
+	
+	<body>
+		<div class="box">
+			<div class="title-box">
+				<label>Info</label>
+			</div>
+			<div class="box-tr">
+				<label id="revision"></label>
+			</div>		
+			<div class="box-tr">
+				<label>Contact: ionutcriste28@gmail.com</label>
+			</div>	
+			<label style="color: rgba(255, 255, 255, 0.07); z-index: 3; position: fixed; top: 93%; right: 19%; font-size: 12px;">Copyright&copy; Johnl(Ioan Criste), All rights reserved.</label>
+		</div>	
+	</body>
+</html>
+
+<script>
+
+$(document).ready(OnReady);
+function OnReady()
+{
+	$("#revision").text(`Build number: ${config.GetStrValue("revision")}`);
+}
+
+</script>

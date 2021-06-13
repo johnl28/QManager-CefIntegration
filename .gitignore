@@ -1,0 +1,7 @@
+
+*.ipch
+GPUCache/data_0
+*.dll
+*.obj
+*.tlog
+*.log

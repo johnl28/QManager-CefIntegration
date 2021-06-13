@@ -1,0 +1,115 @@
+<html>
+  	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+  	</head>
+
+	<body>
+
+		  
+		<div class="box" id="box-1">
+			<div class="title-box">
+				<label>Global Settings</label>
+				<button onclick="Reset()" data-toggle="tooltip" data-placement="left" title="Reset to default" class="btn btn-danger" style="width: 30px; height: 30px; padding: 0px; float: right; margin-right: 10px;"><span class="material-icons">settings_backup_restore</span></button>
+			</div>	
+		</div>
+		<div style="padding-top:10px; border: solid 1px rgba(255, 0, 0, 0.522); display: none; background-color: rgba(165, 42, 42, 0.042); color: rgba(255, 0, 0, 0.83); animation: pulse 0.2s;" class="alert alert-danger box" onclick="$('#restart-prog-alert').fadeOut()" id="restart-prog-alert">
+			Restart of the program required.
+		</div>
+	</body>
+</html>
+
+
+<script>
+
+var configs = [
+	{
+		id : "startup-cfg",
+		text : "Run on startup",
+		restart_required : false,
+		function : config.ToggleStartup
+
+	},
+	{
+		id : "render-cfg",
+		text : "GPU Hardware acceleration",
+		restart_required : true,
+	},
+	{
+		id : "dev-mode-cfg",
+		text : "Enable developer mode",
+		restart_required : true,
+	}
+]
+
+function ShowRestartWarning()
+{
+	$("#restart-prog-alert").show();
+}
+
+function toggleConfig(id, restart_required)
+{
+	var result = config.GetIntValue(id) == 0 ? 1 : 0;
+	config.SetIntValue(id, result);
+
+	if(restart_required)
+	{
+		ShowRestartWarning();
+	}
+}
+
+function Reset()
+{
+	for(i = 0; i < configs.length; i++)
+	{
+		var cfg = configs[i];
+		config.SetIntValue(cfg.id, 0);
+
+		$(`#${cfg.id}`).prop('checked', false);
+	}	
+
+	ShowRestartWarning();
+}
+
+function InitConfigList()
+{
+	for(i = 0; i < configs.length; i++)
+	{
+		var cfg = configs[i];
+		var tr = `<div class="box-tr">
+					<div class="form-check form-switch">
+						<input class="form-check-input" onclick="toggleConfig('${cfg.id}', ${cfg.restart_required})" type="checkbox" id="${cfg.id}" />
+						<label class="form-check-label" for="${cfg.id}">${cfg.text}</label>
+					</div>
+				</div>`;
+
+		$("#box-1").append(tr);
+
+		if(config.GetIntValue(cfg.id))
+		{
+			$(`#${cfg.id}`).prop("checked", true);
+		}
+
+		if(cfg.disabled)
+		{
+			$(`#${cfg.id}`).prop('disabled', true);
+		}
+
+		if(cfg.function)
+		{
+			$(`#${cfg.id}`).click(cfg.function);
+		}
+
+	}
+}
+
+$(document).ready(OnReady);
+function OnReady()
+{
+	InitConfigList();
+}
+	
+</script>	
+
+
+

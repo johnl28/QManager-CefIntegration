@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+	<link href="static/lib/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+	<link href="static/css/common.css" rel="stylesheet">
+   	<link href="static/css/app.css" rel="stylesheet">	
+	<title>QMANAGER APP</title> 
+  </head>
+  
+	<div id="app">
+		
+		<!-- TITLE BAR -->
+		<header>
+			<img style="-webkit-app-region: drag; width: 30px; height: 30px; position: fixed; margin-top: 5px; margin-left: 5px;" id="title-icon" src="static/img/icon/icon.png"></img>
+			<div style="-webkit-app-region: drag;" id="title-label" class="title"></div> 
+			<button data-toggle="tooltip" data-placement="bottom" title="Exit" class="header-btn btn-danger" onclick="Exit()"> <span aria-hidden="true">&times;</span> </button>
+			<button data-toggle="tooltip" data-placement="bottom" title="Minimize" class="header-btn btn-dark" onclick="Quit(1)"> 	<span aria-hidden="true">&minus;</span> </button>
+			<button data-toggle="tooltip" data-placement="bottom" title="Refresh" class="header-btn btn-dark" onclick="Refresh()"> <span aria-hidden="true">&#8634;</span> </button>
+			<!-- <button class="header-btn btn-dark" onclick="TEST()"> <span aria-hidden="true">&#8634;</span> </button> -->
+		</header>
+
+		<body>
+
+			<!-- NAVBAR -->
+			<div class="nav"></div>
+
+			<!-- ROUTER VIEW -->
+			<div id="router"></div>
+
+			<!-- POP UP -->
+			<div id="popup" class="overlay">
+				<div class="popup">
+					<div id="pop-text"></div>
+					<div id="footer"><button type="button" class="btn btn-danger">Close</button></div>
+				</div>
+			</div>
+
+		</body>
+	</div>
+
+
+<script src="static/lib/js/jquery.js"></script>
+<script src="static/lib/js/bootstrap.bundle.min.js"></script>
+<script src="static/js/common.js"></script>
+<script src="static/js/main.js"></script>
+</html>
+
+
+
