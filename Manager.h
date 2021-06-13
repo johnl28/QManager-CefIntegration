@@ -10,7 +10,6 @@
 #include "JSManager.h"
 #include "AppManager.h"
 
-
 #define DESTROY_PTR(ptr) { if(ptr) delete ptr; ptr = nullptr; }
 
 
