@@ -1,8 +1,8 @@
-/*
-File: common.js
-Author: johnl
-Date: 02.06.2021
-*/  
+/************************************** 
+    File: common.js
+    Author: johnl
+    Date: 02.06.2021
+***************************************/  
 
 function InitCommon() {
     $('[data-toggle="tooltip"]').tooltip({ html:true });

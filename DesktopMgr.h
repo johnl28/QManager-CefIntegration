@@ -3,6 +3,7 @@
 #define _DESK_MGR_H_
 #include <map>
 #include <vector>
+#include <chrono>
 #include <thread>
 #include <string>
 #include <windows.h>
@@ -22,7 +23,7 @@ private:
 
 	std::map<std::string, HWND> m_wnd_map;
 
-	double _last_update = 0.0f;
+	std::chrono::milliseconds _last_update = std::chrono::milliseconds(0);
 	uint8_t _cur_time = 0;
 
 	void ToggleDesktopIcons(int what);

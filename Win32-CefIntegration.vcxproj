@@ -76,7 +76,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <TargetName>QManagerRS_$(Configuration)</TargetName>
+    <TargetName>QManagerRES_$(Configuration)</TargetName>
     <OutDir>$(SolutionDir)Win32-CefBuild\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

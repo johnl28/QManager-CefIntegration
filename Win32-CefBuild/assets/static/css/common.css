@@ -51,6 +51,11 @@
   ::-webkit-scrollbar-thumb:hover { background-color: #1c1f22;}
   ::-webkit-resizer { background-color: rgb(43, 43, 43); }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 body {
 	border: none;
@@ -157,11 +162,19 @@ input[type='range']::-webkit-slider-runnable-track {
 	height: 25px;
 	background-color: #1a1d21;
 	border: solid 1px #2b2a28; 
+	box-shadow:none !important;
+}
+
+.form-switch .form-check-input {
+	width: 40px;	
+	color: rgb(22, 21, 21);
+
 }
 
 .form-switch input:hover {
 	border: solid 1px #2b2a28; 
 }
+
 
 .form-switch input:checked {
 	background-color: #2b2a28;
@@ -199,14 +212,25 @@ text {
 	padding-left: 15px;
 }
 
-#seconds-label {
+.seconds-label {
+	color: white;
+	border: solid 1px #1a1d21;
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #08090a;
+	padding-right: 15px;
+	padding-left: 15px;	
 	text-align: center;
-	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	width: 50%;
+	display:inline;
 }
 
+.seconds-label:focus {
+	border: solid 1px #2a2f35;
+	outline: none;
+}
 
 .overlay {
 	position: fixed;

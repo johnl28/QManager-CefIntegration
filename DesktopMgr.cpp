@@ -1,5 +1,6 @@
 #include "DesktopMgr.h"
 
+#include <chrono>
 #include <ctime>
 #include "include/cef_v8.h"
 
@@ -141,12 +142,12 @@ void DesktopManager::OnDeskUpdate()
             _cur_time = GLOBAL::GetConfig()->GetInt("desk_mgr_time");
         }
 
-        auto result = static_cast<double>(std::time(nullptr));
+        auto result = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
 
         if (result > _last_update && _cur_time)
         {
             --_cur_time;
-            _last_update = result + 0.8;
+            _last_update = result + std::chrono::milliseconds(1000);
 
             if (!_cur_time)
             {

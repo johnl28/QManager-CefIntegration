@@ -54,11 +54,11 @@ void GLOBAL::InitShellIcon()
     nidApp_->cbSize             = sizeof(NOTIFYICONDATA);
     nidApp_->hWnd               = window_;
     nidApp_->uID                = IDI_WIN32CEFINTEGRATION;
-    nidApp_->uFlags             = NIF_ICON | NIF_INFO | NIF_SHOWTIP | NIF_MESSAGE;
+    nidApp_->uFlags             = NIF_ICON | NIF_TIP | NIF_MESSAGE;
     nidApp_->hIcon              = hMainIcon;
-    nidApp_->uVersion =         NOTIFYICON_VERSION_4;
+    nidApp_->uVersion           = NOTIFYICON_VERSION_4;
 
-   // _snwprintf_s(nidApp_->szTip, ARRAYSIZE(nidApp_->szTip), L"Test application");
+    _snwprintf_s(nidApp_->szTip, ARRAYSIZE(nidApp_->szTip), L"QManager");
 
     nidApp_->uCallbackMessage   = WM_USER_SHELLICON;
 

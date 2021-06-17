@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\ionut\Desktop\Projects\Win32-CefIntegration\Win32-CefBuild\QManagerRS_Release.exe</FullPath>
+      <FullPath>C:\Users\ionut\Desktop\Projects\QManager-CefIntegration\Win32-CefBuild\QManagerRS_Release.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

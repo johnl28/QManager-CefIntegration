@@ -66,6 +66,7 @@ public:
     // render process
     static CefRefPtr<JSManager>     GetJSHandler() { return GLOBAL::get().jshandler_; }
     static CefRefPtr<CefV8Context>  GetGlobalContext() { return GLOBAL::get().context_; }
+    // render process end
 };
 
 

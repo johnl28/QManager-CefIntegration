@@ -3,7 +3,7 @@ Author: Johnl
 Email: ionutcriste28@gmail.com
 Date: 28.05.2021
 
-(C) Copyright, All rights reserved.
+(C) Copyright Johnl, All rights reserved.
 
 Useful links:
 https://google.github.io/styleguide/cppguide.html
@@ -170,6 +170,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
 
             //UpdateWindow(hWnd);
+            SetForegroundWindow(hWnd);
             BringWindowToTop(hWnd);
         }
         return 0;
@@ -207,21 +208,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             case IDM_OPEN:
                 GLOBAL::GetBrowser()->Reload();
-                break;
-            case IDM_TEST:
-                {
-                    TCHAR szPath[MAX_PATH];
-
-                    GetModuleFileName(NULL, szPath, MAX_PATH);
-
-                    HKEY newValue;
-
-                    RegOpenKey(HKEY_CURRENT_USER, L"Software\\Microsoft\\Windows\\CurrentVersion\\Run", &newValue);
-
-                    RegSetValueEx(newValue, L"QManager", 0, REG_SZ, (LPBYTE)szPath, sizeof(szPath));
-
-                    RegCloseKey(newValue);
-                }
                 break;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);

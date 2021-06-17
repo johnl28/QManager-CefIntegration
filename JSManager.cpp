@@ -185,9 +185,26 @@ namespace config
     JS_FUNC(ToggleStartup)
     {
 
-        auto hwnd = FindWindowA("Shell_TrayWnd", nullptr);
-        SetWindowLong(hwnd, GWL_EXSTYLE, GetWindowLong(hwnd, GWL_EXSTYLE) | WS_EX_LAYERED);
-        SetLayeredWindowAttributes(hwnd, RGB(255, 0, 0), 200, LWA_ALPHA);
+        HKEY hKey;
+        const char* czStartName = "MyApplication";
+        const char* czExePath = "C:\\Users\\user\\AppData\\Roaming\\Microsoft\\Windows\\MyApp.exe";
+
+        LONG lnRes = RegOpenKeyEx(HKEY_CURRENT_USER,
+            L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
+            0, KEY_WRITE,
+            &hKey);
+
+        if (ERROR_SUCCESS == lnRes)
+        {
+            lnRes = RegSetValueExA(hKey,
+                czStartName,
+                0,
+                REG_SZ,
+                (unsigned char*)czExePath,
+                strlen(czExePath));
+        }
+
+        RegCloseKey(hKey);
     }
 
 
