@@ -77,7 +77,7 @@ body {
 	background: #101214;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8); 
 	border-radius: 5px;
-
+    border:solid 1px #2d32386b;
 	padding-bottom: 10px;
 	margin-right: auto;
 	margin-left: auto;
