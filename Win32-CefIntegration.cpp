@@ -3,7 +3,6 @@ Author: Johnl
 Email: ionutcriste28@gmail.com
 Date: 28.05.2021
 
-(C) Copyright Johnl, All rights reserved.
 
 Useful links:
 https://google.github.io/styleguide/cppguide.html
