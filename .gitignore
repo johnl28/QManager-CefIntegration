@@ -1,6 +1,7 @@
 
 *.ipch
 GPUCache/data_0
+Release
 .vs
 *.dll
 *.obj
