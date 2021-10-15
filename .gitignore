@@ -1,6 +1,7 @@
 
 *.ipch
 GPUCache/data_0
+.vs
 *.dll
 *.obj
 *.tlog
