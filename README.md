@@ -18,7 +18,7 @@ This software uses [CEF](https://bitbucket.org/chromiumembedded/cef/src/master/)
 
 ### Dependencies
 
-* `Chromium Version` 91.0.4472.101 (not compatbile with newer)
+* `Chromium Version` 91.0.4472.101 (not compatbile with newer versions)
 * `JsonCPP` 1.8.0
 * `Bootstrap` Latest version
 * `jQuery` Latest version
@@ -26,6 +26,6 @@ This software uses [CEF](https://bitbucket.org/chromiumembedded/cef/src/master/)
 
 ### Build
 
-The project can be builded with Visual Studio 2019 a newer version.
+The project can be builded with Visual Studio 2019 or a newer version.
 
 **The project is linking the libraries using global environment variables:** `CEF_DIR` and `jsoncpp`.
