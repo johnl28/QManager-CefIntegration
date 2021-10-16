@@ -5,11 +5,11 @@
 
 [![badge](https://img.shields.io/github/license/johnl28/QManager-CefIntegration)](https://github.com/johnl28/QManager-CefIntegration/blob/main/LICENSE.txt)
 
-QManager is an windows executable which provide a range of tools to personalise your desktop, such as:
+QManager is a windows executable which provide a range of tools to personalise your desktop, such as:
 * Auto-hide icons
-* Tracking color
-* Text highlight color
-* Global text color
+* Tracking color changer
+* Text highlight color changer
+* Global text color changer
 
 This software uses [CEF](https://bitbucket.org/chromiumembedded/cef/src/master/) for UI rendering and [JsonCPP](https://github.com/open-source-parsers/jsoncpp) for config files.
 
