@@ -261,7 +261,7 @@ void JSManager::Initialize(CefRefPtr<CefBrowser> browser, CefRefPtr<CefV8Context
 {
     auto global = context->GetGlobal();
 
-    auto confClass = CefV8Value::CreateObject(NULL, NULL);
+    auto confClass = CefV8Value::CreateObject(nullptr, nullptr);
     global->SetValue("config", confClass, V8_PROPERTY_ATTRIBUTE_NONE);
 
 

@@ -2,8 +2,10 @@
 *.ipch
 GPUCache/data_0
 Release
+Debug
 .vs
 *.dll
 *.obj
 *.tlog
 *.log
+*.pdb
