@@ -186,8 +186,9 @@ namespace config
     {
 
         HKEY hKey;
-        const char* czStartName = "MyApplication";
-        const char* czExePath = "C:\\Users\\user\\AppData\\Roaming\\Microsoft\\Windows\\MyApp.exe";
+        const char* czStartName = "QManager";
+        char czExePath[1000] = {};
+        GetModuleFileNameA(nullptr, czExePath, 1000);
 
         LONG lnRes = RegOpenKeyEx(HKEY_CURRENT_USER,
             L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",

@@ -9,3 +9,10 @@ Debug
 *.tlog
 *.log
 *.pdb
+Win32-CefBuild/QManagerRES_Release.exe
+Win32-CefBuild/GPUCache/data_1
+Win32-CefBuild/config.json
+GPUCache/index
+GPUCache/data_3
+GPUCache/data_2
+GPUCache/data_1

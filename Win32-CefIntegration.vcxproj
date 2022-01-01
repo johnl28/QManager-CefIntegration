@@ -91,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(CEF_DIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CEF_DIR)/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

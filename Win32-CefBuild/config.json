@@ -1,11 +1,11 @@
 {
 	"desk_mgr" : 1,
 	"desk_mgr_key" : 1,
-	"desk_mgr_time" : 18,
+	"desk_mgr_time" : 4,
 	"dev-mode-cfg" : 0,
 	"first_run" : 1,
 	"link" : "file:///assets/main.html",
 	"render-cfg" : 1,
 	"revision" : "1.0.1.2",
-	"startup-cfg" : 0
+	"startup-cfg" : 1
 }
